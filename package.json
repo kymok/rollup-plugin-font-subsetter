@@ -11,15 +11,15 @@
   "author": "Kaoru Yamaoka",
   "license": "MIT",
   "dependencies": {
-    "@types/subset-font": "^1.4.2",
-    "rollup": "^4.2.0",
-    "subset-font": "^2.1.0",
-    "typescript": "^5.2.2"
+    "@types/subset-font": "^2.3.0",
+    "rollup": "^4.44.1",
+    "subset-font": "^2.4.0",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@rollup/plugin-url": "^8.0.2",
-    "fontkit": "^2.0.2",
-    "rimraf": "^5.0.5",
-    "vitest": "^0.34.6"
+    "fontkit": "^2.0.4",
+    "rimraf": "^6.0.1",
+    "vitest": "^3.2.4"
   }
 }
