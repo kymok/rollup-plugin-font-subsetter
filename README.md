@@ -1,14 +1,20 @@
-# vite-plugin-font-subsetter
+# rollup-plugin-font-subsetter
 
-A Vite plugin that subsets fonts at bundle time based on page contents.
+A Rollup plugin that subsets fonts at bundle time based on page contents.
+
+## Installation
+
+```bash
+npm install rollup-plugin-font-subsetter --save-dev
+```
 
 ## Usage
 
-create a `vite.config.js` and import the plugin.
+create a `rollup.config.js` and import the plugin.
 
 ```js
-// vite.config.js
-import { fontSubsetter } from "vite-plugin-font-subsetter";
+// rollup.config.js
+import { fontSubsetter } from "rollup-plugin-font-subsetter";
 
 export default defineConfig({
   plugins: [

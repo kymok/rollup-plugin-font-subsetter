@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-font-subsetter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Rollup plugin that subsets fonts at bundle time based on page contents.",
   "main": "dist/index.js",
   "scripts": {
