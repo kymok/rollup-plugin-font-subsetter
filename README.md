@@ -24,9 +24,4 @@ The plugin subsets `.woff2` font files for character set computed from `.htm/.ht
 ### Limitations
 
 * Does not work with dynamic content.
-* May not work with obfuscation.
-
-## TODO
-
-- [ ] Write tests
-- [ ] Check compatibility with Rollup
+* May not work well with obfuscation.

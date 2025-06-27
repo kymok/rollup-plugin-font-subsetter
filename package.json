@@ -4,7 +4,7 @@
   "description": "A Vite plugin that subsets fonts at bundle time based on page contents.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
     "build": "tsc",
     "prepare": "tsc"
   },
