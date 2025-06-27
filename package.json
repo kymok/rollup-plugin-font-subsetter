@@ -1,7 +1,7 @@
 {
-  "name": "vite-plugin-font-subsetter",
+  "name": "rollup-plugin-font-subsetter",
   "version": "0.1.0",
-  "description": "A Vite plugin that subsets fonts at bundle time based on page contents.",
+  "description": "A Rollup plugin that subsets fonts at bundle time based on page contents.",
   "main": "dist/index.js",
   "scripts": {
     "test": "vitest run",
