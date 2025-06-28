@@ -33,7 +33,7 @@ async function generateBundle(
 ) {
   // list files
   const fontFiles = Object.keys(bundle).filter((fileName) => {
-    return fileName.match(/\.woff2$/)
+    return fileName.match(/\.woff2?$/)
   })
   const sourceFiles = Object.keys(bundle).filter((fileName) => {
     return fileName.match(/\.(js|css|htm|html)$/)
@@ -59,10 +59,12 @@ async function generateBundle(
   for (const fileName of fontFiles) {
     const font = bundle[fileName]
     if (IsAssetInfo(font) && typeof (font.source) !== 'string') {
+      // Determine target format from filename
+      const targetFormat = fileName.endsWith('.woff2') ? 'woff2' : 'woff'
       const subset = await subsetFont(
         Buffer.from(font.source),
         glyphSetString,
-        { targetFormat: 'woff2' }
+        { targetFormat }
       )
       font.source = new Uint8Array(subset)
     }

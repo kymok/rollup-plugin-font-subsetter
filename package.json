@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-font-subsetter",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A Rollup plugin that subsets fonts at bundle time based on page contents.",
   "main": "dist/index.js",
   "scripts": {
@@ -15,6 +15,19 @@
       "type": "OFL-1.1",
       "url": "./test/fixtures/FiraCode/OFL.txt"
     }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kymok/rollup-plugin-font-subsetter"
+  },
+  "homepage": "https://github.com/kymok/rollup-plugin-font-subsetter#readme",
+  "keywords": [
+    "rollup",
+    "plugin",
+    "font",
+    "subset",
+    "subsetting",
+    "webfont"
   ],
   "dependencies": {
     "@types/subset-font": "^2.3.0",
