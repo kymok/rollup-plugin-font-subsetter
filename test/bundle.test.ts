@@ -19,14 +19,23 @@ const cssPlugin = () => {
       }
     },
     async generateBundle(this: any, _options: any, _bundle: any) {
-      // Copy font file as asset
-      const fontPath = path.join(__dirname, 'fixtures/FiraCode/FiraCode-Regular.woff2');
-      const fontBuffer = await fs.readFile(fontPath);
+      // Copy font files as assets
+      const woff2Path = path.join(__dirname, 'fixtures/FiraCode/FiraCode-Regular.woff2');
+      const woff2Buffer = await fs.readFile(woff2Path);
+      
+      const woffPath = path.join(__dirname, 'fixtures/FiraCode/FiraCode-Regular.woff');
+      const woffBuffer = await fs.readFile(woffPath);
       
       this.emitFile({
         type: 'asset',
         fileName: 'FiraCode-Regular.woff2',
-        source: fontBuffer
+        source: woff2Buffer
+      });
+      
+      this.emitFile({
+        type: 'asset',
+        fileName: 'FiraCode-Regular.woff',
+        source: woffBuffer
       });
     }
   };
@@ -44,25 +53,36 @@ const build = async () => {
 }
 
 test('subsetting', async () => {
-  // Get original font size
-  const originalFontPath = path.join(__dirname, 'fixtures/FiraCode/FiraCode-Regular.woff2');
-  const originalFontStats = await fs.stat(originalFontPath);
-  const originalSize = originalFontStats.size;
+  // Get original font sizes
+  const originalWoff2Path = path.join(__dirname, 'fixtures/FiraCode/FiraCode-Regular.woff2');
+  const originalWoff2Stats = await fs.stat(originalWoff2Path);
+  const originalWoff2Size = originalWoff2Stats.size;
+  
+  const originalWoffPath = path.join(__dirname, 'fixtures/FiraCode/FiraCode-Regular.woff');
+  const originalWoffStats = await fs.stat(originalWoffPath);
+  const originalWoffSize = originalWoffStats.size;
 
   await build();
 
-  // Get subsetted font size
-  const subsettedFontPath = path.join(__dirname, 'tmp-dist/FiraCode-Regular.woff2');
-  const subsettedFontStats = await fs.stat(subsettedFontPath);
-  const subsettedSize = subsettedFontStats.size;
-
-  // Assert that the subsetted font is smaller
-  expect(subsettedSize).toBeLessThan(originalSize);
+  // Get subsetted font sizes
+  const subsettedWoff2Path = path.join(__dirname, 'tmp-dist/FiraCode-Regular.woff2');
+  const subsettedWoff2Stats = await fs.stat(subsettedWoff2Path);
+  const subsettedWoff2Size = subsettedWoff2Stats.size;
   
-  // Log the size reduction
-  const reduction = ((originalSize - subsettedSize) / originalSize * 100).toFixed(2);
-  console.log(`Font size reduced by ${reduction}%: ${originalSize} bytes → ${subsettedSize} bytes`);
+  const subsettedWoffPath = path.join(__dirname, 'tmp-dist/FiraCode-Regular.woff');
+  const subsettedWoffStats = await fs.stat(subsettedWoffPath);
+  const subsettedWoffSize = subsettedWoffStats.size;
+
+  // Assert that the subsetted fonts are smaller
+  expect(subsettedWoff2Size).toBeLessThan(originalWoff2Size);
+  expect(subsettedWoffSize).toBeLessThan(originalWoffSize);
+  
+  // Log the size reductions
+  const woff2Reduction = ((originalWoff2Size - subsettedWoff2Size) / originalWoff2Size * 100).toFixed(2);
+  const woffReduction = ((originalWoffSize - subsettedWoffSize) / originalWoffSize * 100).toFixed(2);
+  console.log(`WOFF2 size reduced by ${woff2Reduction}%: ${originalWoff2Size} bytes → ${subsettedWoff2Size} bytes`);
+  console.log(`WOFF size reduced by ${woffReduction}%: ${originalWoffSize} bytes → ${subsettedWoffSize} bytes`);
 
   // Clean up
-  await fs.rm(path.join(__dirname, 'tmp-dist'), { recursive: true, force: true });
+  // await fs.rm(path.join(__dirname, 'tmp-dist'), { recursive: true, force: true });
 });

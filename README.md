@@ -1,6 +1,6 @@
 # rollup-plugin-font-subsetter
 
-A Rollup plugin that subsets fonts at bundle time based on page contents.
+A Rollup plugin that subsets fonts at build time based on source code (html, css, js/ts) contents. Suitable for static sites and applications where the character set is known at build time.
 
 ## Installation
 
@@ -29,5 +29,5 @@ The plugin subsets `.woff2` font files for character set computed from `.htm/.ht
 
 ### Limitations
 
-* Does not work with dynamic content.
-* May not work well with obfuscation.
+* Does not work with dynamic content since dynamic content includes characters that are not known at build time.
+* May not work well with obfuscated code since it may not be able to extract all characters used in the code.

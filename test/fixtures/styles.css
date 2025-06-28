@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'FiraCode';
-  src: url('./FiraCode/FiraCode-Regular.woff2') format('woff2');
+  src: url('./FiraCode/FiraCode-Regular.woff2') format('woff2'),
+       url('./FiraCode/FiraCode-Regular.woff') format('woff');
 }
 
 body {
